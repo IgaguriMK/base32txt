@@ -64,7 +64,7 @@ func encode(r io.Reader, w io.Writer) {
 		}
 
 		bytes := buf[:size]
-		crc := crc32.Checksum(bytes, crc32.IEEETable)
+		crc := crc32.ChecksumIEEE(bytes)
 		crcBytes := make([]byte, 4)
 		binary.LittleEndian.PutUint32(crcBytes, crc)
 		bytes = append(crcBytes, bytes...)
